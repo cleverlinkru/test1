@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'patient', 'as' => 'patient'], function () {
+    Route::get('', [\App\Http\Controllers\PatientController::class, 'index'])->name('index');
+    Route::post('create', [\App\Http\Controllers\PatientController::class, 'create'])->name('create');
 });
